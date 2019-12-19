@@ -63,12 +63,13 @@ document.addEventListener("DOMContentLoaded", () => {
             event.preventDefault();
             let li = document.createElement("li");
 
-            let reviewTitle = document.createElement("h4");
+            let reviewTitle = document.createElement("span");
             reviewTitle.innerText = title.innerText;
-            li.appendChild(reviewTitle);
+            reviewTitle.style.fontWeight = "bold";
 
-            let reviewText = document.createElement("p");
-            reviewText.innerText = userReview.value;
+            let reviewText = document.createElement("span");
+            reviewText.innerText = `: ${userReview.value}`;
+            li.appendChild(reviewTitle);
             li.appendChild(reviewText);
 
             allReviews.appendChild(li);

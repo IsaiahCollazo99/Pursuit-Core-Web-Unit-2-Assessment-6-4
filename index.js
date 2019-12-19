@@ -48,4 +48,33 @@ document.addEventListener("DOMContentLoaded", () => {
         let selected = event.currentTarget.selectedOptions[0];
         fetchData(`https://ghibliapi.herokuapp.com/films/${selected.id}`, getDescription);
     })
+
+    form.addEventListener("submit", (event) => {
+        let title = document.querySelector("h2");
+        if(!title) {
+            event.preventDefault();
+            alert("A film wasn't selected!");
+
+        } else if(userReview.value === "") {
+            event.preventDefault();
+            alert("No review was entered!");
+
+        } else if(title && userReview.value !== "") {
+            event.preventDefault();
+            let li = document.createElement("li");
+
+            let reviewTitle = document.createElement("h4");
+            reviewTitle.innerText = title.innerText;
+            li.appendChild(reviewTitle);
+
+            let reviewText = document.createElement("p");
+            reviewText.innerText = userReview.value;
+            li.appendChild(reviewText);
+
+            allReviews.appendChild(li);
+        }
+        
+        
+        
+    })
 })

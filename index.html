@@ -6,15 +6,19 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Studio Ghibli Reviews</title>
         <script src="./index.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <link rel="stylesheet" href="master.css">
     </head>
+    
     <body>
         <img src="./assets/images/Studio_Ghibli_logo.svg.png" alt="Studio_Ghibli_logo">
         <h1>Ghibli Review App</h1>
+
         <select name="ghibliMovies" id="ghibliMovies">
             <option value="" selected disabled>Select A Film</option>
         </select>
         <section id="film"></section>
+
         <form>
             <input type="text" name="review" id="review">
             <input type="submit" value="Submit">

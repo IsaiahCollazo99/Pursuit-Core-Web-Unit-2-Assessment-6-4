@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
     }
 
-    const populateSelect = async (data) => {
+    const populateSelect = (data) => {
         data.forEach(film => {
             let option = document.createElement("option");
             option.innerText = film.title;
@@ -24,5 +24,28 @@ document.addEventListener("DOMContentLoaded", () => {
         })
     }
 
+    const getDescription = (data) => {
+        currentFilm.innerHTML = "";
+
+        let filmTitle = document.createElement("h2");
+        filmTitle.innerText = data.title;
+        currentFilm.appendChild(filmTitle);
+
+        let releaseDate = document.createElement("p");
+        releaseDate.id = "release";
+        releaseDate.innerText = data.release_date;
+        currentFilm.appendChild(releaseDate);
+
+        let filmDescription = document.createElement("p");
+        filmDescription.id = "description";
+        filmDescription.innerText = data.description;
+        currentFilm.appendChild(filmDescription);
+    }
+
     fetchData("https://ghibliapi.herokuapp.com/films", populateSelect);
+
+    select.addEventListener("change", (event) => {
+        let selected = event.currentTarget.selectedOptions[0];
+        fetchData(`https://ghibliapi.herokuapp.com/films/${selected.id}`, getDescription);
+    })
 })

@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const getDescription = (data) => {
         currentFilm.innerHTML = "";
 
-        let filmTitle = document.createElement("h2");
+        let filmTitle = document.createElement("h3");
         filmTitle.innerText = data.title;
         currentFilm.appendChild(filmTitle);
 
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 
     form.addEventListener("submit", (event) => {
-        let title = document.querySelector("h2");
+        let title = document.querySelector("h3");
         if(!title) {
             event.preventDefault();
             alert("A film wasn't selected!");
